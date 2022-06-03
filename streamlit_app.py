@@ -10,7 +10,13 @@ st.set_page_config(
 
 st.write("# Welcome to Streamlit! 👋")
 
-st.sidebar.success("Select a demo above.")
+from PIL import Image
+image = Image.open('images/RainsBerry.jpg')
+
+st.image(image, caption='RainsBerry')
+
+
+st.sidebar.success("Promotion : DataScientist – Octobre 2021")
 
 st.markdown(
     """
