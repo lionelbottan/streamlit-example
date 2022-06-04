@@ -15,14 +15,13 @@ image = Image.open('images/RainsBerry.jpg')
 st.image(image, caption='RainsBerry')
 
 
-st.sidebar.success("Promotion : DataScientist – Octobre 2021")
-
 st.markdown(
     """
     ### Promotion : DataScientist – Octobre 2021
     - Lionel Bottan
     - Julien Coquard
     - Samuel Guérin
+    
     Streamlit is an open-source app framework built specifically for
     Machine Learning and Data Science projects.
     **👈 Select a demo from the sidebar** to see some examples

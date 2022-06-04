@@ -1,7 +1,7 @@
 import streamlit as st
 
-st.markdown("# Page 2 ❄️")
-st.sidebar.markdown("# Page 2 ❄️")
+st.markdown("# Préprocessing️")
+st.sidebar.markdown("# Préprocessing")
 
 from PIL import Image
 image = Image.open('images/Climats.jpg')
