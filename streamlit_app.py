@@ -22,6 +22,8 @@ def main():
         readme_text.empty()
         run_the_app()
  
+ if __name__ == "__main__":
+    main()
 
 st.set_page_config(
     page_title="Hello",
