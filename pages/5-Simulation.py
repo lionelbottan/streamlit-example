@@ -12,6 +12,9 @@ st.subheader("Lecture des données")
 df=pd.read_csv('data/echantillon.csv') #Read our data dataset
 st.write(df.head()) 
 
+
+st.subheader("Prédiction")
+
 if st.button("Predict"):
     picklefile = open("modeles/dt.pkl", "rb")
     modele = pickle.load(picklefile)
@@ -21,4 +24,6 @@ if st.button("Predict"):
             "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
             "Mois","Clim_type_det"]
     prediction = modele.predict(df[features])
-    st.write(prediction)
+    predDf = pd.DataFrame(prediction,columns=["prediction"])
+    Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
+    st.write(Sortie)
