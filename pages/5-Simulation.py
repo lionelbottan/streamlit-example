@@ -23,6 +23,12 @@ if st.button("Correlation"):
     st.write(fig)
 
 if st.button("Distribution"):
+    fig, ax = plt.subplots(figsize=(15,6))
+    ax.title.set_text("Distribution annuelle des pluies par climat")
+    sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall", hue="Clim_type_det")
+    st.write(fig)
+
+if st.button("Impact de RainTomorrow"):
     fig, ax = plt.subplots(figsize=(20,4))
     plt.subplot(131)
     sns.histplot(data=df, x="Sunshine",hue="RainTomorrow_Num",bins=20, multiple="layer", thresh=None)
