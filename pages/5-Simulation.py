@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import pickle
 import sklearn
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 st.markdown("# Simulation")
 st.sidebar.markdown("# Simulation")
