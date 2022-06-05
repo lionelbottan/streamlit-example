@@ -14,6 +14,14 @@ st.subheader("Lecture des données")
 df=pd.read_csv('data/echantillon.csv') #Read our data dataset
 st.write(df.head()) 
 
+st.subheader("DataViz")
+
+if st.button("Correlation"):
+    fig, ax = plt.subplots(figsize=(15,6))
+    ListeCrit = ["RainTomorrow_Num","MinTemp","MaxTemp","Sunshine","Evaporation","Humidity3pm"]
+    sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
+    st.write(fig)
+
 
 st.subheader("Prédiction")
 
