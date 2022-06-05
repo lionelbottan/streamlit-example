@@ -27,3 +27,18 @@ if st.button("Predict"):
     predDf = pd.DataFrame(prediction,columns=["prediction"])
     Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
     st.write(Sortie)
+    
+    probs = modele.predict_proba(df[features])
+    y_test =  df["RainTomorrow_Num"]
+    fpr, tpr, seuils = sklearn.metrics.roc_curve(y_test, probs[:,1], pos_label=1)
+    roc_auc = sklearn.metrics.auc(fpr, tpr)
+    fig = plt.figure(figsize=(15,6))
+    plt.plot(fpr, tpr, color='purple',  linestyle='--', lw=1, label='Model (auc = %0.3f)' % roc_auc)
+    plt.plot([0, 1], [0, 1], color='black', lw=1, linestyle=':', label='Aléatoire (auc = 0.5)')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('Taux faux positifs')
+    plt.ylabel('Taux vrais positifs')
+    plt.title('Courbe ROC')
+    plt.legend(loc="lower right");
+    st.pyplot(fig)
