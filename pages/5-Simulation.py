@@ -21,4 +21,4 @@ if st.button("Predict"):
             "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
             "Mois","Clim_type_det"]
     prediction = modele.predict(df)
-    st.write(prediction) 
+    st.write(prediction)
