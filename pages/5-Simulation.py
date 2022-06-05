@@ -2,7 +2,8 @@
 st.markdown("# Simulation")
 st.sidebar.markdown("# Simulation")
 
-model = joblib.load('modeles/xgbc_ru.joblib')
-
 picklefile = open("modeles/xgboost.pkl", "rb")
-    model = pickle.load(picklefile)
+model = pickle.load(picklefile)
+
+df=pd.read_csv('data/echantillon.csv') #Read our data dataset
+st.write(df.head()) 
