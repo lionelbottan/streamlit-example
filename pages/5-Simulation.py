@@ -22,6 +22,16 @@ if st.button("Correlation"):
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
     st.write(fig)
 
+if st.button("Distribution"):
+    fig, ax = plt.subplots(figsize=(20,4))
+    plt.subplot(131)
+    sns.histplot(data=df, x="Sunshine",hue="RainTomorrow_Num",bins=20, multiple="layer", thresh=None)
+    plt.subplot(132)
+    sns.histplot(data=df, x="MinTemp",hue="RainTomorrow_Num",bins=20, thresh=None)
+    plt.subplot(133)
+    sns.histplot(data=df, x="Humidity3pm",hue="RainTomorrow_Num",bins=20)
+    st.write(fig)
+
 
 st.subheader("Prédiction")
 
