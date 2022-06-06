@@ -105,7 +105,8 @@ if st.button("Predict"):
 st.subheader("Interprétabilité")
     
 if st.button("Importance des features"):
+    picklefile = open("modeles/xgboost.pkl", "rb")
+    modele = pickle.load(picklefile)  
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
-    st.set_option('deprecation.showPyplotGlobalUse', False)
     st_shap(shap.summary_plot(shap_values, df[features]),height=300)
