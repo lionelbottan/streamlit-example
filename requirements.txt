@@ -5,3 +5,5 @@ sklearn
 matplotlib
 seaborn
 xgboost==1.5.0
+shap
+lime
