@@ -118,7 +118,7 @@ if st.button("Predict"):
     plt.axvline(x=0.50,color="gray",label="seuil à 0.50")
     plt.axvline(x=Seuil,color="red",label="seuil maximisant F1")
     plt.axvline(x=Seuil1,color="purple",label="seuil Recall=Precision")
-    plt.title("Choix du seuil")
+    plt.title("Choix du seuil sur la classe à modéliser")
     plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left')
     st.pyplot(fig)
     
