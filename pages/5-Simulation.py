@@ -108,5 +108,5 @@ st.subheader("Interprétabilité")
 if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
-    shap.summary_plot(shap_values, base)
+    shap.summary_plot(shap_values, df[features])
     st.pyplot()
