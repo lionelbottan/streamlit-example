@@ -4,4 +4,4 @@ streamlit
 sklearn
 matplotlib
 seaborn
-xgboost
+xgboost==1.5.0
