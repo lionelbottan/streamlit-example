@@ -5,7 +5,7 @@ import pickle
 import sklearn
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+import shap
 
 @st.cache
 def st_shap(plot, height=None):
