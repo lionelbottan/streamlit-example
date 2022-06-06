@@ -100,8 +100,10 @@ if st.button("Predict"):
     predDf = pd.DataFrame(prediction,columns=["prediction"])
     Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
     st.write(Sortie)
+
+st.subheader("Interprétabilité")
     
-if st.button("Intréprétabilité"):
+if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
     st_shap(shap.summary_plot(shap_values, base, plot_type="bar"))
