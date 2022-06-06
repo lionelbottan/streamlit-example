@@ -6,6 +6,7 @@ import sklearn
 import seaborn as sns
 import matplotlib.pyplot as plt
 import shap
+shap.initjs() # for visualization
 
 @st.cache
 def st_shap(plot, height=None):
@@ -108,6 +109,6 @@ st.subheader("Interprétabilité")
 if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
-    st_shap(shap.summary_plot(shap_values, df[features]))
-    #st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
-    #plt.clf
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    shap.summary_plot(shap_values, df[features])
+    st.pyplot()
