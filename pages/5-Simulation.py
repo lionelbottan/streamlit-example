@@ -112,11 +112,13 @@ if st.button("Predict"):
     Seuil1 = dfrpr_MinDiff["threshold"].values[0]
     
     fig = plt.figure(figsize=(15,6))
-    dfpr.plot(x="threshold", y=['precision', 'recall', 'F1'], figsize=(12, 4));
-    plt.axvline(x=0.50,color="gray",label="seuil à 0.50");
-    plt.axvline(x=Seuil,color="red",label="seuil maximisant F1");
-    plt.axvline(x=Seuil1,color="purple",label="seuil Recall=Precision");
-    plt.title("Choix du seuil");
+    plt.plot(dfpr["threshold"], dfpr['precision'],label="precision")
+    plt.plot(dfpr["threshold"], dfpr['recall'],label="recall")
+    plt.plot(dfpr["threshold"], dfpr['F1'],label="F1")
+    plt.axvline(x=0.50,color="gray",label="seuil à 0.50")
+    plt.axvline(x=Seuil,color="red",label="seuil maximisant F1")
+    plt.axvline(x=Seuil1,color="purple",label="seuil Recall=Precision")
+    plt.title("Choix du seuil")
     plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left')
     st.pyplot(fig)
     
