@@ -31,6 +31,15 @@ st.write("Nombre de colonnes : ", df.shape[1])
 
 st.subheader("DataViz")
 
+#Part des jours de pluie
+fig = plt.figure(figsize=(5,5))
+x = df.RainTomorrow_Num.value_counts(normalize=True)
+colors = sns.color_palette('pastel')[0:5]
+labels = ['Pas de pluie', 'Pluie']
+plt.pie(x, labels = labels, colors = colors, autopct='%.0f%%')
+plt.title("Part des jours de pluie")
+st.write(fig)
+
 if st.button("Correlation"):
     fig, ax = plt.subplots(figsize=(15,6))
     ListeCrit = ["RainTomorrow_Num","MinTemp","MaxTemp","Sunshine","Evaporation","Humidity3pm"]
