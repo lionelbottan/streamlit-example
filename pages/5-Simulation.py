@@ -26,7 +26,7 @@ if ( Data == "Perth"):
 if ( Data == "Hobart"):
     df=pd.read_csv('data/Hobart.csv') #Read our data dataset    
 
-st.write(df[["Location"]].head(5)) 
+st.write(df.shape()) 
 
 st.subheader("DataViz")
 
@@ -38,8 +38,8 @@ if st.button("Correlation"):
 
 if st.button("Distribution"):
     fig, ax = plt.subplots(figsize=(15,6))
-    ax.title.set_text("Distribution annuelle des pluies par climat")
-    sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall", hue="Clim_type_det")
+    ax.title.set_text("Distribution annuelle des pluies")
+    sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall")
     st.write(fig)
 
 if st.button("Impact de RainTomorrow"):
@@ -62,11 +62,7 @@ if st.button("Predict"):
             "Humidity3pm","Humidity9am","Pressure9am","Pressure3pm","Cloud3pm","Cloud9am", 
             "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
             "Mois","Clim_type_det"]
-    prediction = modele.predict(df[features])
-    predDf = pd.DataFrame(prediction,columns=["prediction"])
-    Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
-    st.write(Sortie)
-    
+#Courbe de ROC
     probs = modele.predict_proba(df[features])
     y_test =  df["RainTomorrow_Num"]
     fpr, tpr, seuils = sklearn.metrics.roc_curve(y_test, probs[:,1], pos_label=1)
@@ -81,3 +77,8 @@ if st.button("Predict"):
     plt.title('Courbe ROC')
     plt.legend(loc="lower right");
     st.pyplot(fig)
+#Predictions
+    prediction = modele.predict(df[features])
+    predDf = pd.DataFrame(prediction,columns=["prediction"])
+    Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
+    st.write(Sortie)
