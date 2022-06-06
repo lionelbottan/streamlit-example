@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import sklearn
+from sklearn.metrics import precision_recall_curve
 import seaborn as sns
 import matplotlib.pyplot as plt
 import shap
@@ -101,7 +102,6 @@ if st.button("Predict"):
     st.pyplot(fig)
     
 #Graphe selon le seuil 
-# Graphique de l'évolution des scores des métriques en fonction du seuil de décision
     precision, recall, thresholds = precision_recall_curve(y_test, probs[:, 1], pos_label=1)
     dfpr = pd.DataFrame(dict(precision=precision, recall=recall, threshold=[0] + list(thresholds)))
     dfpr['F1']= 2 * (dfpr.precision * dfpr.recall) / (dfpr.precision + dfpr.recall)
