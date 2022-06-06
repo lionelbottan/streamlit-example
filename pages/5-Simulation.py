@@ -1,5 +1,5 @@
 import streamlit as st
-import streamlit.components.v1 as components
+from streamlit_shap import st_shap
 
 import pandas as pd
 import numpy as np
@@ -10,10 +10,6 @@ import matplotlib.pyplot as plt
 import shap
 shap.initjs() # for visualization
 
-@st.cache
-def st_shap(plot, height=None):
-    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-    components.html(shap_html, height=height)
 
 #Chargement du modele
 picklefile = open("modeles/xgboost.pkl", "rb")
@@ -112,4 +108,4 @@ if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    st_shap(shap.summary_plot(shap_values, df[features]))
+    st_shap(shap.summary_plot(shap_values, df[features]),height=300)
