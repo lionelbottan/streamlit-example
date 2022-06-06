@@ -15,15 +15,15 @@ Data = st.selectbox("DataFrame: " , ["echantillon","Sydney","AliceSprings","Darw
 
 if ( Data == "echantillon"):
     df=pd.read_csv('data/echantillon.csv') #Read our data dataset
-else if ( Data == "Sydney"):
+if ( Data == "Sydney"):
     df=pd.read_csv('data/Sydney.csv') #Read our data dataset
-else if ( Data == "AliceSprings"):
+if ( Data == "AliceSprings"):
     df=pd.read_csv('data/AliceSprings.csv') #Read our data dataset
-else if ( Data == "Darwin"):
+if ( Data == "Darwin"):
     df=pd.read_csv('data/Darwin.csv') #Read our data dataset
-else if ( Data == "Perth"):
+if ( Data == "Perth"):
     df=pd.read_csv('data/Perth.csv') #Read our data dataset
-else if ( Data == "Hobart"):
+if ( Data == "Hobart"):
     df=pd.read_csv('data/Hobart.csv') #Read our data dataset    
 
 st.write(df[["Location"]].head(5)) 
