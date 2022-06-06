@@ -109,4 +109,5 @@ if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
     shap.summary_plot(shap_values, df[features])
-    st.pyplot()
+    st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
+    plt.clf
