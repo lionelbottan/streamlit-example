@@ -111,7 +111,7 @@ if st.button("Predict"):
     dfrpr_MinDiff = dfpr[dfpr.Diff_Recall_Precision == dfpr.Diff_Recall_Precision.min()].reset_index()
     Seuil1 = dfrpr_MinDiff["threshold"].values[0]
     
-    plt.figure(figsize=(15,6))
+    fig = plt.figure(figsize=(15,6))
     dfpr.plot(x="threshold", y=['precision', 'recall', 'F1'], figsize=(12, 4));
     plt.axvline(x=0.50,color="gray",label="seuil à 0.50");
     plt.axvline(x=Seuil,color="red",label="seuil maximisant F1");
