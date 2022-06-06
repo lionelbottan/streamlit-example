@@ -1,4 +1,6 @@
 import streamlit as st
+import streamlit.components.v1 as components
+
 import pandas as pd
 import numpy as np
 import pickle
@@ -110,5 +112,4 @@ if st.button("Importance des features"):
     explainer = shap.TreeExplainer(modele)
     shap_values = explainer.shap_values(df[features])
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    shap.summary_plot(shap_values, df[features])
-    st.pyplot()
+    st_shap(shap.summary_plot(shap_values, df[features]))
