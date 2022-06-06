@@ -46,7 +46,7 @@ st.write("Nombre de colonnes : ", df.shape[1])
 
 st.subheader("DataViz")
 
-DataViz = st.selectbox("Quelle Dataviz ? : " , ["Part jours de Pluie","Correlation","Distribution","Impact de RainTomorrow"])
+DataViz = st.selectbox("Quelle Dataviz ? : " , ["Part jours de Pluie","Correlation","Analyse mensuelle","Impact de RainTomorrow"])
 
 if ( DataViz == "Part jours de Pluie"):
     #Part des jours de pluie
@@ -64,7 +64,7 @@ if ( DataViz == "Correlation"):
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
     st.write(fig)
 
-if ( DataViz == "Distribution"):
+if ( DataViz == "Analyse mensuelle"):
     fig, ax = plt.subplots(figsize=(15,6))
     ax.title.set_text("Distribution annuelle des pluies")
     sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall")
@@ -99,6 +99,27 @@ if st.button("Predict"):
     plt.title('Courbe ROC')
     plt.legend(loc="lower right");
     st.pyplot(fig)
+    
+#Graphe selon le seuil 
+# Graphique de l'évolution des scores des métriques en fonction du seuil de décision
+    precision, recall, thresholds = precision_recall_curve(y_test, probs[:, 1], pos_label=1)
+    dfpr = pd.DataFrame(dict(precision=precision, recall=recall, threshold=[0] + list(thresholds)))
+    dfpr['F1']= 2 * (dfpr.precision * dfpr.recall) / (dfpr.precision + dfpr.recall)
+    dfrpr_maxF1 = dfpr[dfpr.F1 == dfpr.F1.max()].reset_index()
+    Seuil = dfrpr_maxF1["threshold"].values[0]
+    dfpr["Diff_Recall_Precision"] = np.abs(dfpr["recall"]-dfpr["precision"])
+    dfrpr_MinDiff = dfpr[dfpr.Diff_Recall_Precision == dfpr.Diff_Recall_Precision.min()].reset_index()
+    Seuil1 = dfrpr_MinDiff["threshold"].values[0]
+    
+    plt.figure(figsize=(15,6))
+    dfpr.plot(x="threshold", y=['precision', 'recall', 'F1'], figsize=(12, 4));
+    plt.axvline(x=0.50,color="gray",label="seuil à 0.50");
+    plt.axvline(x=Seuil,color="red",label="seuil maximisant F1");
+    plt.axvline(x=Seuil1,color="purple",label="seuil Recall=Precision");
+    plt.title("Choix du seuil");
+    plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left')
+    st.pyplot(fig)
+    
 #Predictions
     prediction = modele.predict(df[features])
     predDf = pd.DataFrame(prediction,columns=["prediction"])
