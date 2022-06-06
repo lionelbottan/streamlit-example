@@ -32,7 +32,7 @@ st.write("Nombre de colonnes : ", df.shape[1])
 st.subheader("DataViz")
 
 #Part des jours de pluie
-fig = plt.figure(figsize=(5,5))
+fig = plt.figure(figsize=(3,3))
 x = df.RainTomorrow_Num.value_counts(normalize=True)
 colors = sns.color_palette('pastel')[0:5]
 labels = ['Pas de pluie', 'Pluie']
