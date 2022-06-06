@@ -16,6 +16,12 @@ def st_shap(plot, height=None):
 picklefile = open("modeles/xgboost.pkl", "rb")
 modele = pickle.load(picklefile)  
 
+#Definition des features
+features = ["RainToday_Num","Rain_J-1","Rain_J-2","MinTemp","MaxTemp","Sunshine","Evaporation",
+    "Humidity3pm","Humidity9am","Pressure9am","Pressure3pm","Cloud3pm","Cloud9am", 
+    "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
+    "Mois","Clim_type_det"]
+            
 st.markdown("# Simulation")
 st.sidebar.markdown("# Simulation")
 
@@ -76,10 +82,6 @@ if st.button("Impact de RainTomorrow"):
 st.subheader("Prédiction")
 
 if st.button("Predict"):  
-    features = ["RainToday_Num","Rain_J-1","Rain_J-2","MinTemp","MaxTemp","Sunshine","Evaporation",
-            "Humidity3pm","Humidity9am","Pressure9am","Pressure3pm","Cloud3pm","Cloud9am", 
-            "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
-            "Mois","Clim_type_det"]
 #Courbe de ROC
     probs = modele.predict_proba(df[features])
     y_test =  df["RainTomorrow_Num"]
