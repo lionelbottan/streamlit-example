@@ -26,7 +26,8 @@ if ( Data == "Perth"):
 if ( Data == "Hobart"):
     df=pd.read_csv('data/Hobart.csv') #Read our data dataset    
 
-st.write(df.shape()) 
+st.write("Nombre de lignes : ", df.shape[0]) 
+st.write("Nombre de colonnes : ", df.shape[1]) 
 
 st.subheader("DataViz")
 
