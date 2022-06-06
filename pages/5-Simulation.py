@@ -46,28 +46,31 @@ st.write("Nombre de colonnes : ", df.shape[1])
 
 st.subheader("DataViz")
 
-#Part des jours de pluie
-fig = plt.figure(figsize=(3,3))
-x = df.RainTomorrow_Num.value_counts(normalize=True)
-colors = sns.color_palette('pastel')[0:5]
-labels = ['Pas de pluie', 'Pluie']
-plt.pie(x, labels = labels, colors = colors, autopct='%.0f%%')
-plt.title("Part des jours de pluie")
-st.write(fig)
+DataViz = st.selectbox("Quelle Dataviz ? : " , ["Part jours de Pluie","Correlation","Distribution","Impact de RainTomorrow"])
 
-if st.button("Correlation"):
+if ( DataViz == "Part jours de Pluie"):
+    #Part des jours de pluie
+    fig = plt.figure(figsize=(3,3))
+    x = df.RainTomorrow_Num.value_counts(normalize=True)
+    colors = sns.color_palette('pastel')[0:5]
+    labels = ['Pas de pluie', 'Pluie']
+    plt.pie(x, labels = labels, colors = colors, autopct='%.0f%%')
+    plt.title("Part des jours de pluie")
+    st.write(fig)
+
+if ( DataViz == "Correlation"):
     fig, ax = plt.subplots(figsize=(15,6))
     ListeCrit = ["RainTomorrow_Num","MinTemp","MaxTemp","Sunshine","Evaporation","Humidity3pm"]
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
     st.write(fig)
 
-if st.button("Distribution"):
+if ( DataViz == "Distribution"):
     fig, ax = plt.subplots(figsize=(15,6))
     ax.title.set_text("Distribution annuelle des pluies")
     sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall")
     st.write(fig)
 
-if st.button("Impact de RainTomorrow"):
+if ( DataViz == "Impact de RainTomorrow"):
     fig, ax = plt.subplots(figsize=(20,4))
     plt.subplot(131)
     sns.histplot(data=df, x="Sunshine",hue="RainTomorrow_Num",bins=20, multiple="layer", thresh=None)
