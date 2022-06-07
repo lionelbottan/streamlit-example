@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import sklearn
-from sklearn.metrics import precision_recall_curve, classification_report, ConfusionMatrixDisplay
+from sklearn.metrics import precision_recall_curve, classification_report, confusion_matrix, ConfusionMatrixDisplay
 import seaborn as sns
 import matplotlib.pyplot as plt
 import shap
