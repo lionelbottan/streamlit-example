@@ -65,9 +65,22 @@ if ( DataViz == "Correlation"):
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
     st.write(fig)
 
+    f = plt.figure( figsize= (20, 5) )
+    ax1 = f.add_subplot(121)
+    ax2 = f.add_subplot(122)
+    corr = df.corr()
+    ax1.title.set_text('Correlations de RainTomorrow')
+    temp = corr[["RainTomorrow_Num"]].loc[abs(corr["RainTomorrow_Num"]) > 0.2].sort_values(by="RainTomorrow_Num",ascending=False)
+    sns.heatmap(temp, cmap="YlGnBu",annot=True,ax=ax1)
+    ax2.title.set_text('Correlations de Sunshine')
+    temp = corr[["Sunshine"]].loc[abs(corr["Sunshine"]) > 0.2].sort_values(by="Sunshine",ascending=False)
+    sns.heatmap(temp , cmap="YlGnBu",annot=True,ax=ax2)
+    st.write(fig)
+
+
 if ( DataViz == "Analyse mensuelle"):
     fig, ax = plt.subplots(figsize=(15,6))
-    ax.title.set_text("Distribution annuelle des pluies")
+    ax.title.set_text("Distribution mensuelle des pluies")
     sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall")
     st.write(fig)
 
