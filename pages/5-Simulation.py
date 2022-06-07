@@ -140,7 +140,7 @@ if st.button("Predict"):
     y_pred_best1 = np.where( probs[:,1] >= Seuil1, 1, 0)
     st.text('Matrice de confusion seuil 0.50 :\n ' + classification_report(y_test, y_pred))
     fig = plt.figure(figsize=(15,6))
-    ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+    cm_display = ConfusionMatrixDisplay(cm).plot()
     st.pyplot(fig)
 #Predictions
     prediction = modele.predict(df[features])
