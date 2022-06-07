@@ -66,8 +66,8 @@ if ( DataViz == "Correlation"):
     st.write(fig)
 
     fig = plt.figure( figsize= (20, 5) )
-    ax1 = f.add_subplot(121)
-    ax2 = f.add_subplot(122)
+    ax1 = fig.add_subplot(121)
+    ax2 = fig.add_subplot(122)
     corr = df.corr()
     ax1.title.set_text('Correlations de RainTomorrow')
     temp = corr[["RainTomorrow_Num"]].loc[abs(corr["RainTomorrow_Num"]) > 0.2].sort_values(by="RainTomorrow_Num",ascending=False)
