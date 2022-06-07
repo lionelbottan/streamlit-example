@@ -65,7 +65,7 @@ if ( DataViz == "Correlation"):
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
     st.write(fig)
 
-    f = plt.figure( figsize= (20, 5) )
+    fig = plt.figure( figsize= (20, 5) )
     ax1 = f.add_subplot(121)
     ax2 = f.add_subplot(122)
     corr = df.corr()
