@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import sklearn
-from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import precision_recall_curve, classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
 import shap
@@ -134,12 +134,16 @@ if st.button("Predict"):
     plt.title("Choix du seuil sur la classe à modéliser")
     plt.legend(bbox_to_anchor=(1.05, 1.0), loc='upper left')
     st.pyplot(fig)
-    
+#Matrice de confusion
+    y_pred = np.where(probs[:,1] >= 0.50, 1, 0)    
+    y_pred_best = np.where( probs[:,1] >= Seuil, 1, 0)
+    y_pred_best1 = np.where( probs[:,1] >= Seuil1, 1, 0)
+    st.text('Matrice de confusion seuil 0.50 :\n ' + classification_report(y_test, y_pred))
 #Predictions
     prediction = modele.predict(df[features])
     predDf = pd.DataFrame(prediction,columns=["prediction"])
     Sortie = pd.concat([df[["Date","Location","Climat_Koppen","Clim_type_det","RainTomorrow_Num"]],predDf],axis=1)
-    st.write(Sortie)
+    #st.write(Sortie)
 
 st.subheader("Interprétabilité")
     
