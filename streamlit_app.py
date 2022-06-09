@@ -9,6 +9,8 @@ st.set_page_config(
     layout="wide", 
 )
 
+st.sidebar.title("RainsBerry")
+
 from PIL import Image
 image = Image.open('images/RainsBerry.jpg')
 
