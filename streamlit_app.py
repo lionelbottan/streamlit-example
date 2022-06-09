@@ -33,8 +33,7 @@ def main():
         DataViz()
     if Menu == 'Simulations':
         simulation()
-    else:
-        st.text("coucou")
+
 
     st.sidebar.text("")
     st.sidebar.text("Projet DataScientest")
