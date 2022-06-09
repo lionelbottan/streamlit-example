@@ -27,45 +27,45 @@ def main():
     if Simu:
         simulation()
 
-def simulation()
-#Chargement du modele
-picklefile = open("modeles/xgboost.pkl", "rb")
-modele = pickle.load(picklefile)  
+def simulation():
+    #Chargement du modele
+    picklefile = open("modeles/xgboost.pkl", "rb")
+    modele = pickle.load(picklefile)  
 
-#Definition des features
-features = ["RainToday_Num","Rain_J-1","Rain_J-2","MinTemp","MaxTemp","Sunshine","Evaporation",
-    "Humidity3pm","Humidity9am","Pressure9am","Pressure3pm","Cloud3pm","Cloud9am", 
-    "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
-    "Mois","Clim_type_det"]
-            
-st.markdown("# Simulation")
-st.sidebar.markdown("# Simulation")
+    #Definition des features
+    features = ["RainToday_Num","Rain_J-1","Rain_J-2","MinTemp","MaxTemp","Sunshine","Evaporation",
+        "Humidity3pm","Humidity9am","Pressure9am","Pressure3pm","Cloud3pm","Cloud9am", 
+        "Wind9am_cos","Wind3pm_cos","WindGust_cos","Wind9am_sin","Wind3pm_sin","WindGust_sin", 
+        "Mois","Clim_type_det"]
+                
+    st.markdown("# Simulation")
+    st.sidebar.markdown("# Simulation")
 
-st.subheader("Lecture des données")
+    st.subheader("Lecture des données")
 
-Data = st.selectbox("DataFrame: " , ["echantillon","Sydney","AliceSprings","Darwin","Perth","Hobart"])
+    Data = st.selectbox("DataFrame: " , ["echantillon","Sydney","AliceSprings","Darwin","Perth","Hobart"])
 
-if ( Data == "echantillon"):
-    df=pd.read_csv('data/echantillon.csv') #Read our data dataset
-if ( Data == "Sydney"):
-    df=pd.read_csv('data/Sydney.csv') #Read our data dataset
-if ( Data == "AliceSprings"):
-    df=pd.read_csv('data/AliceSprings.csv') #Read our data dataset
-if ( Data == "Darwin"):
-    df=pd.read_csv('data/Darwin.csv') #Read our data dataset
-if ( Data == "Perth"):
-    df=pd.read_csv('data/Perth.csv') #Read our data dataset
-if ( Data == "Hobart"):
-    df=pd.read_csv('data/Hobart.csv') #Read our data dataset    
+    if ( Data == "echantillon"):
+        df=pd.read_csv('data/echantillon.csv') #Read our data dataset
+    if ( Data == "Sydney"):
+        df=pd.read_csv('data/Sydney.csv') #Read our data dataset
+    if ( Data == "AliceSprings"):
+        df=pd.read_csv('data/AliceSprings.csv') #Read our data dataset
+    if ( Data == "Darwin"):
+        df=pd.read_csv('data/Darwin.csv') #Read our data dataset
+    if ( Data == "Perth"):
+        df=pd.read_csv('data/Perth.csv') #Read our data dataset
+    if ( Data == "Hobart"):
+        df=pd.read_csv('data/Hobart.csv') #Read our data dataset    
 
-st.write("Nombre de lignes : ", df.shape[0]) 
-st.write("Nombre de colonnes : ", df.shape[1]) 
+    st.write("Nombre de lignes : ", df.shape[0]) 
+    st.write("Nombre de colonnes : ", df.shape[1]) 
 
-st.subheader("DataViz")
+    st.subheader("DataViz")
 
-DataViz = st.selectbox("Quelle Dataviz ? : " , ["Part jours de Pluie","Correlation","Analyse mensuelle","Impact de RainTomorrow"])
+    DataViz = st.selectbox("Quelle Dataviz ? : " , ["Part jours de Pluie","Correlation","Analyse mensuelle","Impact de RainTomorrow"])
 
-if ( DataViz == "Part jours de Pluie"):
+    if ( DataViz == "Part jours de Pluie"):
     #Part des jours de pluie
     fig = plt.figure(figsize=(3,3))
     x = df.RainTomorrow_Num.value_counts(normalize=True)
@@ -75,7 +75,7 @@ if ( DataViz == "Part jours de Pluie"):
     plt.title("Part des jours de pluie")
     st.write(fig)
 
-if ( DataViz == "Correlation"):
+    if ( DataViz == "Correlation"):
     fig, ax = plt.subplots(figsize=(15,6))
     ListeCrit = ["RainTomorrow_Num","MinTemp","MaxTemp","Sunshine","Evaporation","Humidity3pm"]
     sns.heatmap(df[ListeCrit].corr(), cmap="YlGnBu",annot=True,ax=ax)
@@ -94,13 +94,13 @@ if ( DataViz == "Correlation"):
     st.write(fig)
 
 
-if ( DataViz == "Analyse mensuelle"):
+    if ( DataViz == "Analyse mensuelle"):
     fig, ax = plt.subplots(figsize=(15,6))
     ax.title.set_text("Distribution mensuelle des pluies")
     sns.lineplot(ax=ax,data=df, x="Mois", y="Rainfall")
     st.write(fig)
 
-if ( DataViz == "Impact de RainTomorrow"):
+    if ( DataViz == "Impact de RainTomorrow"):
     fig, ax = plt.subplots(figsize=(20,4))
     plt.subplot(131)
     sns.histplot(data=df, x="Sunshine",hue="RainTomorrow_Num",bins=20, multiple="layer", thresh=None)
@@ -110,11 +110,10 @@ if ( DataViz == "Impact de RainTomorrow"):
     sns.histplot(data=df, x="Humidity3pm",hue="RainTomorrow_Num",bins=20)
     st.write(fig)
 
+    st.subheader("Prédiction")
 
-st.subheader("Prédiction")
-
-if st.button("Predict"):  
-#Courbe de ROC
+    if st.button("Predict"):  
+    #Courbe de ROC
     probs = modele.predict_proba(df[features])
     y_test =  df["RainTomorrow_Num"]
     fpr, tpr, seuils = sklearn.metrics.roc_curve(y_test, probs[:,1], pos_label=1)
