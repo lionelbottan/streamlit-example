@@ -21,7 +21,7 @@ def main():
 
     Menu = st.sidebar.radio(
      "Menu",
-     ('Le Projet Météo', 'PreProcessing','DataViz','Modelisations','Comparaison des performance','Simulations','Conclusion'))
+     ('Le Projet Météo', 'PreProcessing','DataViz','Modelisations','Performances','Simulations','Conclusion'))
 
     if Menu == 'Le Projet Météo':
         from PIL import Image
