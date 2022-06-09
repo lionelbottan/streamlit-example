@@ -19,7 +19,7 @@ def main():
     #page_icon="👋",
     #layout="wide",)
 
-    Menu = st.radio(
+    Menu = st.sidebar.radio(
      "Menu",
      ('Le Projet Météo', 'PreProcessing','DataViz','Simulations'))
 
