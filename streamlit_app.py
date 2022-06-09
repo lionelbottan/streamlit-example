@@ -29,7 +29,7 @@ def main():
     if Simu:
         simulation()
 
-    st.sidebar("Projet DS - Promotion DataScientist Octobre 2021")
+    st.sidebar.text("Projet DS - Promotion DataScientist Octobre 2021")
 
 def simulation():
     #Chargement du modele
