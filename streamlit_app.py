@@ -21,7 +21,7 @@ def main():
 
     Menu = st.sidebar.radio(
      "Menu",
-     ('Le Projet Météo', 'PreProcessing','DataViz','Modelisations','Comparaison des performance','Simulations'))
+     ('Le Projet Météo', 'PreProcessing','DataViz','Modelisations','Comparaison des performance','Simulations','Conclusion'))
 
     if Menu == 'Le Projet Météo':
         from PIL import Image
@@ -31,8 +31,6 @@ def main():
         PreProcessing()
     if Menu == 'DataViz':
         DataViz()
-    if Menu == 'Modelisations':
-        Menu2 = st.sidebar.radio((" ",'Series Temporelles','Clustering','Machine Learning','Deep Learning'))
     if Menu == 'Simulations':
         simulation()
 
