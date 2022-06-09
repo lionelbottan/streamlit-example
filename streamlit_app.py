@@ -21,7 +21,7 @@ def main():
 
     Menu = st.sidebar.radio(
      "Menu",
-     ('Le Projet Météo', 'PreProcessing','DataViz','Simulations'))
+     ('Le Projet Météo', 'PreProcessing','DataViz','Modelisations','Comparaison des performance','Simulations'))
 
     if Menu == 'Le Projet Météo':
         from PIL import Image
@@ -31,6 +31,9 @@ def main():
         PreProcessing()
     if Menu == 'DataViz':
         DataViz()
+    if Menu == 'Modelisations':
+        Menu2 = st.sidebar.radio(
+        ('Series Temporelles','Clustering','Machine Learning','Deep Learning'))
     if Menu == 'Simulations':
         simulation()
 
@@ -38,7 +41,10 @@ def main():
     st.sidebar.text("")
     st.sidebar.text("Projet DataScientest")
     st.sidebar.text("Promotion DataScientist Octobre 2021")
-
+    st.sidebar.text("Lionel Bottan")  
+    st.sidebar.text("Julien Coquard")  
+    st.sidebar.text("Samuel Guérin")      
+    
 def PreProcessing():
     from PIL import Image
     image = Image.open('images/Climats.jpg')
