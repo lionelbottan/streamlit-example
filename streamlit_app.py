@@ -23,7 +23,7 @@ def main():
     image = Image.open('images/RainsBerry.jpg')
     st.image(image, caption='RainsBerry')
 
-    Simu = st.checkbox('Simulations')
+    Simu = st.sidebar.checkbox('Simulations')
     if Simu:
         simulation()
 
