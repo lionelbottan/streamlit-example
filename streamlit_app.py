@@ -19,17 +19,21 @@ def main():
     #page_icon="👋",
     #layout="wide",)
 
-    Projet = st.sidebar.checkbox('Le Projet Météo',value=True)
-    if Projet:
+    Menu = st.radio(
+     "Menu",
+     ('Le Projet Météo', 'PreProcessing','DataViz','Simulations'))
+
+    if Menu == 'Le Projet Météo':
         from PIL import Image
         image = Image.open('images/RainsBerry.jpg')
         st.image(image, caption='RainsBerry')
-
-    Simu = st.sidebar.checkbox('Simulations')
-    if Simu:
+    if Menu == 'Simulations':
         simulation()
+    else:
+        st.write("coucou")
 
-    st.sidebar.text("Projet DS - Promotion DataScientist Octobre 2021")
+    st.sidebar.text("Projet DataScientest")
+    st.sidebar.text("Promotion DataScientist Octobre 2021")
 
 def simulation():
     #Chargement du modele
