@@ -32,8 +32,7 @@ def main():
     if Menu == 'DataViz':
         DataViz()
     if Menu == 'Modelisations':
-        Menu2 = st.sidebar.radio(
-        (" ",'Series Temporelles','Clustering','Machine Learning','Deep Learning'))
+        Menu2 = st.sidebar.radio((" ",'Series Temporelles','Clustering','Machine Learning','Deep Learning'))
     if Menu == 'Simulations':
         simulation()
 
