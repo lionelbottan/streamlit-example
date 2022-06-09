@@ -27,13 +27,27 @@ def main():
         from PIL import Image
         image = Image.open('images/RainsBerry.jpg')
         st.image(image, caption='RainsBerry')
+    if Menu == 'PreProcessing':
+        PreProcessing()
+    if Menu == 'DataViz':
+        DataViz()
     if Menu == 'Simulations':
         simulation()
     else:
         st.text("coucou")
 
-    st.sidebar.text(\n"Projet DataScientest")
+    st.sidebar.text("")
+    st.sidebar.text("Projet DataScientest")
     st.sidebar.text("Promotion DataScientist Octobre 2021")
+
+def PreProcessing():
+    from PIL import Image
+    image = Image.open('images/Climats.jpg')
+    st.image(image, caption='Climats')
+    
+def DataViz():
+
+
 
 def simulation():
     #Chargement du modele
