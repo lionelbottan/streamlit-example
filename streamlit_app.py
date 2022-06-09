@@ -30,9 +30,9 @@ def main():
     if Menu == 'Simulations':
         simulation()
     else:
-        st.write("coucou")
+        st.text("coucou")
 
-    st.sidebar.text("Projet DataScientest")
+    st.sidebar.text(\n"Projet DataScientest")
     st.sidebar.text("Promotion DataScientist Octobre 2021")
 
 def simulation():
