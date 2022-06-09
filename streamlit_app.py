@@ -19,9 +19,11 @@ def main():
     #page_icon="👋",
     #layout="wide",)
 
-    from PIL import Image
-    image = Image.open('images/RainsBerry.jpg')
-    st.image(image, caption='RainsBerry')
+    Projet = st.sidebar.checkbox('Le Projet Météo',value=True)
+    if Projet:
+        from PIL import Image
+        image = Image.open('images/RainsBerry.jpg')
+        st.image(image, caption='RainsBerry')
 
     Simu = st.sidebar.checkbox('Simulations')
     if Simu:
