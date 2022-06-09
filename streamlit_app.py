@@ -29,6 +29,8 @@ def main():
     if Simu:
         simulation()
 
+    st.sidebar("Projet DS - Promotion DataScientist Octobre 2021")
+
 def simulation():
     #Chargement du modele
     picklefile = open("modeles/xgboost.pkl", "rb")
@@ -41,7 +43,6 @@ def simulation():
         "Mois","Clim_type_det"]
                 
     st.markdown("# Simulation")
-    st.sidebar.markdown("# Simulation")
 
     st.subheader("Lecture des données")
 
