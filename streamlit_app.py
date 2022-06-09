@@ -46,6 +46,7 @@ def PreProcessing():
     st.image(image, caption='Climats')
     
 def DataViz():
+    st.header("DataViz")
 
 
 
