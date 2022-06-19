@@ -35,7 +35,7 @@ def main():
         PreProcessing()
     if Menu == 'DataViz':
         DataViz()
-     if Menu == 'Modelisations':
+    if Menu == 'Modelisations':
         Modelisations()       
     if Menu == 'Simulations':
         simulation()
