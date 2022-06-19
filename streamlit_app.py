@@ -50,11 +50,13 @@ def PreProcessing():
 def DataViz():
     st.header("DataViz")
 
+import Modelisations
+Modelisations.Modelisations()
+
+
 import Simulations
 Simulations.Simulations()
 
-import Modelisations
-Modelisations.Modelisations()
 
 
 if __name__ == "__main__":
