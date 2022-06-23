@@ -63,8 +63,6 @@ def Modelisations():
         Equilibrage()
     if Menu == 'Traitement des valeurs manquantes':
         
-    if Menu == 'DataViz':
-        
     if Menu == 'Sélection de variables':
         
     if Menu == 'Conclusion':
