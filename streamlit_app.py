@@ -33,6 +33,8 @@ def main():
         DataViz()
     if Menu == 'Simulations':
         simulation()
+    if Menu == 'Modelisations':
+        Modelisations()
 
 
     st.sidebar.text("")
@@ -50,7 +52,7 @@ def PreProcessing():
 def DataViz():
     st.header("DataViz")
 
-def Modelisation():
+def Modelisations():
     st.header("test")
 
 
