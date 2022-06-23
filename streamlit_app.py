@@ -60,7 +60,7 @@ def Modelisations():
      ('Equilibrage des classes','Traitement des valeurs manquantes','Sélection de variables','Conclusion'))
 
     def Equilibrage():
-        st.header("Equilibrage des classes")
+        st.h2("Equilibrage des classes")
         
     def TraitementNA():
         st.header("Traitement des valeurs manquantes")
