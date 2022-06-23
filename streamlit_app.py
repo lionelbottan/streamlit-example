@@ -62,10 +62,9 @@ def Modelisations():
     def Equilibrage():
         st.subheader("Equilibrage des classes")
         st.image('images/model_01_desequilibre.jpg')
-        st.markdown("Performances d'un modèle Random Forest avant équilibrage :")
+        st.markdown("<b><i> Performances d'un modèle Random Forest sur le jeu de données complet : </i></b>")
         st.image('images/model_02_sans_equ.jpg')
         if st.checkbox("Après équilibrage"):
-            st.markdown("Performances d'un modèle Random Forest après équilibrage (Random Under Sampler) :")
             st.image('images/model_03_avec_equ.jpg')
         
     def TraitementNA():
