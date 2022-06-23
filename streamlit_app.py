@@ -56,7 +56,7 @@ def Modelisations():
     st.header("Modélisations")
     
     Menu_mod = st.sidebar.radio(
-     "Menu",
+     "Menu Modélisations",
      ('Equilibrage des classes','Traitement des valeurs manquantes','Sélection de variables','Conclusion'))
 
     def Equilibrage():
@@ -75,13 +75,13 @@ def Modelisations():
     if Menu_mod == 'Equilibrage des classes':
         Equilibrage()
         
-    if Menu == 'Traitement des valeurs manquantes':
+    if Menu_mod == 'Traitement des valeurs manquantes':
         TraitementNA()
         
-    if Menu == 'Sélection de variables':
+    if Menu_mod == 'Sélection de variables':
         SelectionVar()
         
-    if Menu == 'Conclusion':
+    if Menu_mod == 'Conclusion':
         Conclusion()
     
     
