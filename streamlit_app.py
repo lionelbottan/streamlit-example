@@ -55,20 +55,30 @@ def DataViz():
 def Modelisations():
     st.header("Modélisations")
     
-    Menu2 = st.sidebar.radio(
+    Menu_mod = st.sidebar.radio(
      "Menu",
      ('Equilibrage des classes','Traitement des valeurs manquantes','Sélection de variables','Conclusion'))
 
-    if Menu2 == 'Equilibrage des classes':
+    if Menu_mod == 'Equilibrage des classes':
         Equilibrage()
     if Menu == 'Traitement des valeurs manquantes':
-        
+        TraitementNA()
     if Menu == 'Sélection de variables':
-        
+        SelectionVar()
     if Menu == 'Conclusion':
+        Conclusion()
     
     def Equilibrage():
         st.header("Equilibrage des classes")
+        
+    def TraitementNA():
+        st.header("Traitement des valeurs manquantes")
+        
+    def SelectionVar():
+        st.header("Sélection de variables")
+     
+    def Conclusion():
+        st.header("Conclusion")
 
 def simulation():
     #Chargement du modele
