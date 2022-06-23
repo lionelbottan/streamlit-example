@@ -50,7 +50,7 @@ def PreProcessing():
 def DataViz():
     st.header("DataViz")
 
-def Modélisation():
+def Modelisation():
     st.header("test")
 
 
