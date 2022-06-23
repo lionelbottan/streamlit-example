@@ -73,7 +73,8 @@ def Modelisations():
     def TraitementNA():
         st.subheader("Traitement des valeurs manquantes")
         st.image('images/model_07_proportionsNA.jpg')
-        if st.checkbox("**Scores en fonction du jeau de données :**"):
+        if st.checkbox("Scores"):
+            st.markdown("**Scores en fonction du jeu de données :**")
             st.image('images/model_08_scores_JD.jpg')
         
     def SelectionVar():
