@@ -60,16 +60,16 @@ def Modelisations():
      ('Equilibrage des classes','Traitement des valeurs manquantes','Sélection de variables','Conclusion'))
 
     def Equilibrage():
-        st.h2("Equilibrage des classes")
+        st.subheader("Equilibrage des classes")
         
     def TraitementNA():
-        st.header("Traitement des valeurs manquantes")
+        st.subheader("Traitement des valeurs manquantes")
         
     def SelectionVar():
-        st.header("Sélection de variables")
+        st.subheader("Sélection de variables")
      
     def Conclusion():
-        st.header("Conclusion")
+        st.subheader("Conclusion")
     
       
     if Menu_mod == 'Equilibrage des classes':
